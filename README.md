@@ -5,6 +5,7 @@ Why not
 Make sure you have `npm` installed and run the following commands:
 
 `npm install jspm -g`
+
 `npm install jspm-server -g`
 
 ## running
