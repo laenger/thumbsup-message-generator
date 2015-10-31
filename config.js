@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "/",
+  baseURL: "http://jordylangen.github.io/thumbsup-message-generator/",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
@@ -13,9 +13,9 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
   bundles: {
-    "./build.js": [
-      "./lib/main.js",
-      "./lib/bootstrap.js",
+    "build.js": [
+      "lib/main.js",
+      "lib/bootstrap.js",
       "github:components/jquery@2.1.4",
       "github:components/jquery@2.1.4/jquery"
     ]
