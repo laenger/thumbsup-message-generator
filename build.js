@@ -5931,10 +5931,28 @@ define("github:components/jquery@2.1.4", ["github:components/jquery@2.1.4/jquery
 
 _removeDefine();
 })();
-System.register('lib/bootstrap.js', ['github:components/jquery@2.1.4'], function (_export) {
+System.register("lib/generator.js", [], function (_export) {
+	"use strict";
+
+	var messages;
+
+	_export("generateMessage", generateMessage);
+
+	function generateMessage() {
+		return messages[new Date().getTime() % messages.length];
+	}
+
+	return {
+		setters: [],
+		execute: function () {
+			messages = ["why not", "looks good", "very nice!"];
+		}
+	};
+});
+System.register('lib/bootstrap.js', ['github:components/jquery@2.1.4', 'lib/generator.js'], function (_export) {
 	'use strict';
 
-	var $;
+	var $, generateMessage;
 
 	_export('bootstrap', bootstrap);
 
@@ -5943,7 +5961,9 @@ System.register('lib/bootstrap.js', ['github:components/jquery@2.1.4'], function
 
 		$(function () {
 			$('#generate').on('click', function () {
-				$('#generated-result').css('display', 'block').text(':+1: why not');
+				var message = generateMessage();
+
+				$('#generated-result').css('display', 'block').text(':+1: ' + message);
 			});
 		});
 	}
@@ -5951,6 +5971,8 @@ System.register('lib/bootstrap.js', ['github:components/jquery@2.1.4'], function
 	return {
 		setters: [function (_githubComponentsJquery214) {
 			$ = _githubComponentsJquery214['default'];
+		}, function (_libGeneratorJs) {
+			generateMessage = _libGeneratorJs.generateMessage;
 		}],
 		execute: function () {}
 	};
