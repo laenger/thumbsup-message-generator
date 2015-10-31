@@ -9,6 +9,8 @@ Make sure you have `npm` installed and run the following commands:
 `npm install jspm-server -g`
 
 ## running
+First make sure you have all dependencies installed by running `jspm install` in the root directory.
+
 Simply run `jspm-server` in the root directory.
 
 ## releasing
