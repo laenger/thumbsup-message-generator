@@ -1,4 +1,30 @@
 "bundle";
+System.register("lib/generator.js", [], function (_export) {
+	"use strict";
+
+	var messages, dogeMessages;
+
+	_export("generateMessage", generateMessage);
+
+	function generateMessage() {
+		var index = new Date().getTime() % messages.length;
+		if (index === 0) {
+			var start = dogeMessages[Math.floor(Math.random() * dogeMessages.length)];
+			var end = dogeMessages[Math.floor(Math.random() * dogeMessages.length)];
+			return start + ", " + end;
+		} else {
+			return messages[new Date().getTime() % messages.length];
+		}
+	}
+
+	return {
+		setters: [],
+		execute: function () {
+			messages = ["[random doge message]", "why not", "looks good", "very nice!", "awesome", "looks about right", "sick!", "exactly what we need", "even better than i thought", "uber", "speechless", "nice", "cool", "flawless", "damn pretty", ":)", "o.O", "¯\_(ツ)_/¯"];
+			dogeMessages = ["such cool", "much wow", "such awesome", "much awesome", "much wow", "very wow"];
+		}
+	};
+});
 (function() {
 var _removeDefine = System.get("@@amd-helpers").createDefine();
 (function(global, factory) {
@@ -5931,24 +5957,6 @@ define("github:components/jquery@2.1.4", ["github:components/jquery@2.1.4/jquery
 
 _removeDefine();
 })();
-System.register("lib/generator.js", [], function (_export) {
-	"use strict";
-
-	var messages;
-
-	_export("generateMessage", generateMessage);
-
-	function generateMessage() {
-		return messages[new Date().getTime() % messages.length];
-	}
-
-	return {
-		setters: [],
-		execute: function () {
-			messages = ["why not", "looks good", "very nice!"];
-		}
-	};
-});
 System.register('lib/bootstrap.js', ['github:components/jquery@2.1.4', 'lib/generator.js'], function (_export) {
 	'use strict';
 
